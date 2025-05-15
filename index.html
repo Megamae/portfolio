@@ -49,6 +49,19 @@
         nav ul li a:hover {
             color: #d63384;
         }
+
+        /* Slow bounce animation */
+        @keyframes bounceSlow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .animate-bounce-slow {
+            animation: bounceSlow 2s infinite;
+        }
     </style>
 </head>
 <body class="bg-pink-100 text-gray-800 font-sans">
@@ -59,7 +72,12 @@
             <div class="flex items-center space-x-4">
                 <h1 class="text-2xl font-bold text-pink-600">M.E.G.A</h1>
             </div>
-            <ul class="flex space-x-6">
+            <button id="menuToggle" class="md:hidden text-pink-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <ul id="menu" class="hidden md:flex space-x-6">
                 <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="hover:text-pink-600">Home</a></li>
                 <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="hover:text-pink-600">About</a></li>
                 <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="hover:text-pink-600">Services</a></li>
@@ -69,19 +87,27 @@
         </div>
     </nav>
 
+    <script>
+        // Toggle menu visibility
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
     <!-- Hero Section -->
     <section id="home" class="h-screen flex flex-col items-center justify-center bg-pink-300 text-gray-900">
         <div class="text-center fade-in">
             <img src="mega3.jpg" alt="mega" class="mx-auto mb-5 rounded-full shadow-2xl shadow-gray-500 w-[450px] h-[450px] object-cover">
-            <h2 class="text-6xl font-extrabold mt-6">Hi I'm</h2>
-            <h3 class="text-6xl font-extrabold text-white mt-2 shadow-text">Mega Mae</h3>
+            <h2 class="text-4xl md:text-6xl font-extrabold mt-6">Hi I'm</h2>
+            <h3 class="text-3xl md:text-6xl font-extrabold text-white mt-2 shadow-text">Mega Mae</h3>
             <style>
                 .shadow-text {
                     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
                 }
             </style>
-            <p class="mt-4 text-2xl font-bold text-black">Your Virtual Assistant</p>
-            <p class="mt-2 text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Meg "</p>
+            <p class="mt-4 text-lg md:text-2xl font-bold text-black">Your Virtual Assistant</p>
+            <p class="mt-2 text-base md:text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Meg "</p>
             <button onclick="scrollToSection('about')" class="mt-6 px-6 py-3 bg-gray-900 text-pink-300 rounded-lg shadow-md hover:bg-gray-700 btn-hover animate-bounce" style="animation-duration: 2s;">
                 About Me
             </button>
@@ -93,42 +119,27 @@
         <div class="container mx-auto flex flex-col md:flex-row items-center">
             <!-- Image Section -->
             <div class="md:w-1/2 flex justify-center">
-                <img src="mega2.jpg" alt="Sonny's Photo" class="rounded-lg shadow-2xl w-3/4 max-w-md h-auto" width="550" height="550">
+                <img src="mega2.jpg" alt="Sonny's Photo" class="rounded-lg shadow-2xl max-w-full h-auto">
             </div>
             <!-- Information Section -->
             <div class="md:w-1/2 mt-8 md:mt-0 text-center md:text-left">
-                <h2 class="text-5xl font-extrabold text-pink-600">
-                    <span class="text-gray-800">A</span>
-                    <span class="text-pink-600">B</span>
-                    <span class="text-gray-800">O</span>
-                    <span class="text-pink-600">U</span>
-                    <span class="text-gray-800">T</span>
-                    <span class="text-gray-800"> </span>
-                    <span class="text-gray-800">&nbsp;</span>
-                    <span class="text-gray-800">M</span>
-                    <span class="text-pink-600">E</span>
-                </h2>
-                <p class="mt-4 text-gray-600">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-pink-600">About Me</h2>
+                <p class="mt-4 text-gray-600 text-sm md:text-base">
                     Hello! I'm <span class="text-pink-600 font-bold">Mega Mae B. Lumubos</span>, a dedicated professional with 3 years of combined experience in the BPO industry as a Customer Service Representative and as a Front Office Associate in the hotel industry. 
                     My background has equipped me with exceptional communication skills, a strong customer-centric approach, and the ability to handle challenging situations with professionalism and poise.
                 </p>
-                <p class="mt-4 text-gray-600">
+                <p class="mt-4 text-gray-600 text-sm md:text-base">
                     Recently, I have embarked on an exciting journey to become a Virtual Assistant, combining my skills and passion with my dream of working from home. 
                     As a Virtual Assistant, I am committed to providing outstanding support to clients by leveraging my organizational skills, attention to detail, and ability to adapt to various tasks and responsibilities.
                 </p>
-                <p class="mt-4 text-gray-600">
+                <p class="mt-4 text-gray-600 text-sm md:text-base">
                     My experience in the BPO and hospitality industries has honed my ability to multitask, manage time effectively, and deliver results under pressure. 
                     I am proficient in handling administrative tasks, managing schedules, and ensuring seamless communication, all while maintaining a high level of professionalism and efficiency.
                 </p>
-                <p class="mt-4 text-gray-600">
+                <p class="mt-4 text-gray-600 text-sm md:text-base">
                     Beyond my professional skills, I am a proactive learner who is always eager to acquire new knowledge and improve my expertise. 
                     I believe in building strong relationships with clients and colleagues, fostering trust, and contributing to the success of the team or business I am part of.
                 </p>
-                <p class="mt-4 text-gray-600">
-                    If you're looking for a reliable, detail-oriented, and skilled Virtual Assistant who can bring a blend of customer service expertise and administrative support to your business, I would be thrilled to collaborate with you. 
-                    Let's work together to achieve your goals and create meaningful results that drive success.
-                </p>
-                <!-- Icons Section -->
                 <div class="mt-6 flex flex-col items-center space-y-6">
                     <div class="flex justify-center space-x-6">
                         <a href="https://www.canva.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
@@ -150,7 +161,6 @@
                             <img src="https://img.icons8.com/color/48/000000/gmail-new.png" alt="Gmail Icon" class="w-12 h-12">
                         </a>
                     </div>
-                    <!-- Contact Me Section -->
                     <div class="mt-8 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
                         <a href="megamae.baldado.pdf" download class="px-8 py-4 bg-pink-600 text-white font-bold rounded-lg shadow-md hover:bg-pink-700 btn-hover flex items-center space-x-3">
                             <img src="https://img.icons8.com/ios-filled/50/ffffff/resume.png" alt="Resume Icon" class="w-6 h-6">
@@ -160,122 +170,76 @@
                             <img src="https://img.icons8.com/ios-filled/50/ffffff/contacts.png" alt="Contact Icon" class="w-6 h-6">
                             <span>Contact Me</span>
                         </button>
-                        <style>
-                            @keyframes bounceSlow {
-                                0%, 100% {
-                                    transform: translateY(0);
-                                }
-                                50% {
-                                    transform: translateY(-10px);
-                                }
-                            }
-                            .animate-bounce-slow {
-                                animation: bounceSlow 2s infinite;
-                            }
-                        </style>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
 
-
- <!-- Testimonials Section -->
-<section id="services" class="py-20 bg-pink-300"></section>
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-gray-900">Services</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            <!-- Virtual Assistant Service -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="va.png" alt="Assistant Female Icon" class="mx-auto mb-4 w-16 h-16">
-                <h3 class="text-xl font-bold text-pink-600">Virtual Assistant</h3>
-                <p class="mt-2 text-gray-700">Providing administrative support, managing schedules, and ensuring seamless communication for your business.</p>
-            </div>
-            <!-- Social Media Manager Service -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="soc.png" alt="Social Media Manager Icon" class="mx-auto mb-4 w-16 h-16">
-                <h3 class="text-xl font-bold text-pink-600">Social Media Manager</h3>
-                <p class="mt-2 text-gray-700">Creating and managing social media content to boost your online presence and engagement.</p>
-            </div>
-            <!-- Customer Representative Service -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="https://img.icons8.com/color/96/000000/customer-support.png" alt="Customer Representative Icon" class="mx-auto mb-4 w-16 h-16">
-                <h3 class="text-xl font-bold text-pink-600">Customer Representative</h3>
-                <p class="mt-2 text-gray-700">Delivering exceptional customer service and support to ensure client satisfaction and loyalty.</p>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-pink-300">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-900">Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="va.png" alt="Assistant Female Icon" class="mx-auto mb-4 w-16 h-16">
+                    <h3 class="text-xl font-bold text-pink-600">Virtual Assistant</h3>
+                    <p class="mt-2 text-gray-700">Providing administrative support, managing schedules, and ensuring seamless communication for your business.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="soc.png" alt="Social Media Manager Icon" class="mx-auto mb-4 w-16 h-16">
+                    <h3 class="text-xl font-bold text-pink-600">Social Media Manager</h3>
+                    <p class="mt-2 text-gray-700">Creating and managing social media content to boost your online presence and engagement.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://img.icons8.com/color/96/000000/customer-support.png" alt="Customer Representative Icon" class="mx-auto mb-4 w-16 h-16">
+                    <h3 class="text-xl font-bold text-pink-600">Customer Representative</h3>
+                    <p class="mt-2 text-gray-700">Delivering exceptional customer service and support to ensure client satisfaction and loyalty.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Previous Employment -->
-<section id="previous-employment" class="py-20 bg-pink-300">
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-gray-900">Previous Employment</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
-            <!-- Employment 1 -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="helloconnect.jpg" alt="Hello Connect" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
-                <h3 class="text-xl font-bold text-pink-600">Hello Connect Inc.</h3>
-                <p class="mt-2 text-gray-700">Customer Care Specialist</p>
-            </div>
-            <!-- Employment 2 -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="sitel.png" alt="Sitel Palawan" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
-                <h3 class="text-xl font-bold text-pink-600">Sitel Palawan</h3>
-                <p class="mt-2 text-gray-700">Customer Care Representative</p>
-            </div>
-            <!-- Employment 3 -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="unohotel.jpg" alt="Uno Hotel" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
-                <h3 class="text-xl font-bold text-pink-600">Uno Hotel Palawan</h3>
-                <p class="mt-2 text-gray-700">Front Office Associate</p>
-            </div>
-            <!-- Employment 4 -->
-            <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300">
-                <img src="bluelagoon.jpg" alt="Blue Lagoon" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
-                <h3 class="text-xl font-bold text-pink-600">Blue Lagoon</h3>
-                <p class="mt-2 text-gray-700">Front Office Associate</p>
-            </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-10 bg-pink-200">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-pink-600">Contact</h2>
+            <p class="mt-4 text-gray-700">Feel free to reach out to me for any inquiries or collaborations.</p>
+            <a href="mailto:megamae.baldado97@gmail.com" class="text-gray-700 hover:text-gray-600">
+                <img src="https://img.icons8.com/color/48/000000/gmail-new.png" alt="Gmail Icon" class="inline-block w-6 h-6 mr-2">
+                megamae.baldado97@gmail.com
+            </a>
+            <form class="mt-8 space-y-4 flex flex-col items-center w-full max-w-md mx-auto" action="https://formsubmit.co/megamae.baldado97@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="name" placeholder="Name" class="w-full px-3 py-2 border border-gray-400 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                <input type="email" name="email" placeholder="Email" class="w-full px-3 py-2 border border-gray-400 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                <textarea name="message" placeholder="Message" class="w-full px-3 py-2 border border-gray-400 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" required></textarea>
+                <button type="submit" class="w-full px-4 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 btn-hover">
+                    Send
+                </button>
+            </form>
         </div>
-    </div>
-</section>
-<!-- Contact Section -->
-<section id="contact" class="py-10 bg-pink-200">
-    <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-pink-600">Contact</h2>
-        <p class="mt-4 text-gray-700">Feel free to reach out to me for any inquiries or collaborations.</p>
-        <a href="mailto:megamae.baldado97@gmail.com" class="text-gray-700 hover:text-gray-600">
-            <img src="https://img.icons8.com/color/48/000000/gmail-new.png" alt="Gmail Icon" class="inline-block w-6 h-6 mr-2">
-            megamae.baldado97@gmail.com
-        </a>
-        <form class="mt-8 space-y-4 flex flex-col items-center" action="https://formsubmit.co/megamae.baldado97@gmail.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="name" placeholder="Name" class="w-80 px-3 py-2 border border-gray-400 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" required>
-            <input type="email" name="email" placeholder="Email" class="w-80 px-3 py-2 border border-gray-400 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" required>
-            <textarea name="message" placeholder="Message" class="w-80 px-3 py-2 border border-gray-400 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-600" required></textarea>
-            <button type="submit" class="w-80 px-4 py-2 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 btn-hover">
-                Send
-            </button>
-        </form>
-        <div class="mt-6"></div>
-            <div class="flex items-center justify-center space-x-3">
-                <img src="https://img.icons8.com/color/48/000000/phone.png" alt="Phone Icon" class="w-6 h-6 animate-pulse">
-                <p class="text-gray-700 font-bold">Contact Number: +63 9157874933</p>
-            </div>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="https://www.facebook.com/megamae.baldado" target="_blank" class="text-gray-700 hover:text-gray-600">
-                    <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook Icon" class="w-12 h-12">
-                </a>
-                <a href="https://www.linkedin.com/in/mega-mae-lumubos-4342a4277/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                    <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn Icon" class="w-12 h-12">
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Back to Top Button -->
-    ↑ Top
-</button>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-4 right-4 bg-pink-600 text-white p-3 rounded-full shadow-md hover:bg-pink-700">
+        ↑
+    </button>
+    <script>
+        // Show/hide Back to Top button
+        window.addEventListener('scroll', function () {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Scroll to top
+        document.getElementById('backToTop').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
